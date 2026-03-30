@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="EN-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>POP Web Game</title>
+
+    <meta name="title" content="POP Raylib Web game">
+    <meta name="description" content="POP game using raylib">
+    <meta name="keywords" content="raylib, programming, examples, html5, C, C++, library, learn, games, videogames">
+    <meta name="viewport" content="width=device-width">
+    
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://www.raylib.com/favicon.ico">
+
+    <style>
+      body {
+        font-family: arial;
+        margin: 0;
+        padding: none;
+      }
+
+      #header {
+        width: 100%;
+        height: 80px;
+        background-color: #888888;
+      }
+
+      /* NOTE: raylib logo is embedded in the page as base64 png image */
+      #logo {
+        width:64px;
+        height:64px;
+        float:left;
+        position:relative;
+        margin:10px;
+        background-image:url('data:image/png;base64,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')
+      }
+
+      .emscripten { padding-right: 0; margin-left: auto; margin-right: auto; display: block; }
+      div.emscripten { text-align: center; }
+      div.emscripten_border { border: 1px solid black; }
+
+      /* NOTE: Canvas *must not* have any border or padding, or mouse coords will be wrong */
+      canvas.emscripten {
+        border: 0px none;
+        background: black;
+        width: 512;
+        height: 512;
+      }
+
+      .spinner {
+        height: 30px;
+        width: 30px;
+        margin: 0;
+        margin-top: 20px;
+        margin-left: 20px;
+        display: inline-block;
+        vertical-align: top;
+        -webkit-animation: rotation .8s linear infinite;
+        -moz-animation: rotation .8s linear infinite;
+        -o-animation: rotation .8s linear infinite;
+        animation: rotation 0.8s linear infinite;
+        border-left: 5px solid black;
+        border-right: 5px solid black;
+        border-bottom: 5px solid black;
+        border-top: 5px solid red;
+        border-radius: 100%;
+        background-color: rgb(245, 245, 245);
+      }
+      @-webkit-keyframes rotation {
+        from {-webkit-transform: rotate(0deg);}
+        to {-webkit-transform: rotate(360deg);}
+      }
+      @-moz-keyframes rotation {
+        from {-moz-transform: rotate(0deg);}
+        to {-moz-transform: rotate(360deg);}
+      }
+      @-o-keyframes rotation {
+        from {-o-transform: rotate(0deg);}
+        to {-o-transform: rotate(360deg);}
+      }
+      @keyframes rotation {
+        from {transform: rotate(0deg);}
+        to {transform: rotate(360deg);}
+      }
+
+      #status {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 30px;
+        margin-left: 20px;
+        font-weight: bold;
+        color: rgb(40, 40, 40);
+      }
+
+      #progress {
+        height: 0px;
+        width: 0px;
+      }
+
+      #controls {
+        display: inline-block;
+        float: right;
+        vertical-align: top;
+        margin-top: 15px;
+        margin-right: 20px;
+      }
+
+      #output {
+        width: 100%;
+        height: 140px;
+        margin: 0 auto;
+        margin-top: 10px;
+        display: block;
+        background-color: black;
+        color: rgb(37, 174, 38);
+        font-family: 'Lucida Console', Monaco, monospace;
+        outline: none;
+      }
+
+      input[type=button] {
+        background-color: lightgray;
+        border: 4px solid darkgray;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        width: 140px;
+        height: 50px;
+        margin-left: 10px;
+      }
+
+      input[type=button]:hover {
+        background-color: #f5f5f5ff;
+        border-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+        <a id="logo" href="https://www.raylib.com"></a>
+
+        <div class="spinner" id='spinner'></div>
+        <div class="emscripten" id="status">Downloading...</div>
+
+        <span id='controls'>
+          <span><input type="button" value="📜 SOURCE CODE" onclick="location.href='https://github.com/raysan5/raylib';"/></span>
+          <span><input type="button" value="🖵 FULLSCREEN" onclick="Module.requestFullscreen(false, false)"></span>
+          <span><input type="button" id="btn-audio" value="🔇 MUTE" onclick="toggleAudio()"></span>
+        </span>
+
+        <div class="emscripten">
+          <progress value="0" max="100" id="progress" hidden=1></progress>
+        </div>
+    </div>
+
+    <div class="emscripten_border">
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+    </div>
+
+    <textarea id="output" rows="8"></textarea>
+
+    <script type='text/javascript' src="https://cdn.jsdelivr.net/gh/eligrey/FileSaver.js/dist/FileSaver.min.js"> </script>
+    <script type='text/javascript'>
+        function saveFileFromMEMFSToDisk(memoryFSname, localFSname)     // This can be called by C/C++ code
+        {
+            var isSafari = false; // Not supported, navigator.userAgent access is being restricted
+            //var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            var data = FS.readFile(memoryFSname);
+            var blob;
+
+            if (isSafari) blob = new Blob([data.buffer], { type: "application/octet-stream" });
+            else blob = new Blob([data.buffer], { type: "application/octet-binary" });
+
+            // NOTE: SaveAsDialog is a browser setting. For example, in Google Chrome,
+            // in Settings/Advanced/Downloads section you have a setting:
+            // 'Ask where to save each file before downloading' - which you can set true/false.
+            // If you enable this setting it would always ask you and bring the SaveAsDialog
+            saveAs(blob, localFSname);
+        }
+    </script>
+    <script type='text/javascript'>
+        var statusElement = document.querySelector('#status');
+        var progressElement = document.querySelector('#progress');
+        var spinnerElement = document.querySelector('#spinner');
+        var Module = {
+            preRun: [],
+            postRun: [],
+            print: (function() {
+                var element = document.querySelector('#output');
+
+                if (element) element.value = '';    // Clear browser cache
+
+                return function(text) {
+                    if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+                    // These replacements are necessary if you render to raw HTML
+                    //text = text.replace(/&/g, "&amp;");
+                    //text = text.replace(/</g, "&lt;");
+                    //text = text.replace(/>/g, "&gt;");
+                    //text = text.replace('\n', '<br>', 'g');
+                    console.log(text);
+
+                    if (element) {
+                        element.value += text + "\n";
+                        element.scrollTop = element.scrollHeight; // focus on bottom
+                    }
+                };
+            })(),
+            printErr: function(text) {
+                if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+
+                console.error(text);
+            },
+            canvas: (function() {
+                var canvas = document.querySelector('#canvas');
+
+                // As a default initial behavior, pop up an alert when webgl context is lost.
+                // To make your application robust, you may want to override this behavior before shipping!
+                // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
+                canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
+
+                return canvas;
+            })(),
+            setStatus: function(text) {
+                if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: '' };
+                if (text === Module.setStatus.last.text) return;
+
+                var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+                var now = Date.now();
+
+                if (m && now - Module.setStatus.last.time < 30) return; // If this is a progress update, skip it if too soon
+
+                Module.setStatus.last.time = now;
+                Module.setStatus.last.text = text;
+
+                if (m) {
+                    text = m[1];
+                    progressElement.value = parseInt(m[2])*100;
+                    progressElement.max = parseInt(m[4])*100;
+                    progressElement.hidden = true;
+                    spinnerElement.hidden = false;
+                } else {
+                    progressElement.value = null;
+                    progressElement.max = null;
+                    progressElement.hidden = true;
+                    if (!text) spinnerElement.style.display = 'none';
+                }
+
+                statusElement.innerHTML = text;
+            },
+            totalDependencies: 0,
+            monitorRunDependencies: function(left) {
+                this.totalDependencies = Math.max(this.totalDependencies, left);
+                Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
+            },
+            //noInitialRun: true
+        };
+
+        Module.setStatus('Downloading...');
+
+        window.onerror = function() {
+            Module.setStatus('Exception thrown, see JavaScript console');
+            spinnerElement.style.display = 'none';
+            Module.setStatus = function(text) { if (text) Module.printErr('[post-exception status] ' + text); };
+        };
+    </script>
+
+    <!-- REF: https://developers.google.com/web/updates/2018/11/web-audio-autoplay -->
+    <script type='text/javascript'>
+        var audioBtn = document.querySelector('#btn-audio');
+
+        // An array of all contexts to resume on the page
+        const audioContexList = [];
+        (function() {
+            // A proxy object to intercept AudioContexts and
+            // add them to the array for tracking and resuming later
+            self.AudioContext = new Proxy(self.AudioContext, {
+                construct(target, args) {
+                    const result = new target(...args);
+                    audioContexList.push(result);
+                    if (result.state == "suspended") audioBtn.value = "🔈 RESUME";
+                    return result;
+                }
+            });
+        })();
+
+        function toggleAudio() {
+            var resumed = false;
+            audioContexList.forEach(ctx => {
+                if (ctx.state == "suspended") { ctx.resume(); resumed = true; }
+                else if (ctx.state == "running") ctx.suspend();
+            });
+
+            if (resumed) audioBtn.value = "🔇 MUTE";
+            else audioBtn.value = "🔈 RESUME";
+        }
+    </script>
+    {{{ SCRIPT }}}
+  </body>
+</html>
