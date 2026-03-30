@@ -709,7 +709,7 @@ static void DrawPanel(const GS *g)
     sy += 18;
     for (int i = 0; i < 3; i++)
     {
-        int nbw = (i == 0) ? bw : (int)(bw * 0.72f);
+        int nbw = (i == 0) ? bw : (int)(bw * 0.95f);
         int nx = tx + (bw - nbw) / 2;
         DrawRectangle(nx, sy, nbw, nbw, (Color){18, 18, 30, 255});
         DrawRectangleLinesEx((Rectangle){nx, sy, nbw, nbw}, 1, C_EDGE);
@@ -828,7 +828,8 @@ static void DrawOver(const GS *g)
     /* rounded panel */
     Rectangle rr = {35, 108, WIN_W - 70, WIN_H - 70};
     DrawRectangleRounded(rr, 18, 18, (Color){10, 6, 22, 255});
-    DrawRectangleRoundedLines(rr, 18, 18, 2, (Color){110, 0, 150, 255});
+    DrawRectangleRoundedLines(rr, 18, 18, (Color){110, 0, 150, 255});
+    
 
     int w = MeasureText("GAME OVER", 48);
     int gx = (WIN_W - w) / 2;
